@@ -1,5 +1,7 @@
-const days = ["Mon", "Tues", "Wednes", "Thurs", "Fri", "Satur"];
+let greetings = ["Hi", "Bye", "Howdy"];
 
-const fullDays = days.map((day, index) => `#${index} ${day}day`);
+if(!greetings.includes("Hello")){
+    greetings.push("Hello");
+}
 
-console.log(fullDays);
+console.log(greetings);

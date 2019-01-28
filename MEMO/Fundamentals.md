@@ -164,3 +164,68 @@ $ node sample.js
   '4 Friday',
   '5 Saturday' ]
 ```
+
+## Array.filter
+- 주어진 function을 통과한 모든 원소들로 이루어진 배열을 생성
+```js
+const numbers = [2,23,13,453,235,2,234,6,2,5,6,3,345,5,235,3]
+
+const biggerThan15 = numbers.filter(number => number > 15);
+
+console.log(biggerThan15)
+```
+```!
+$ node sample.js
+[ 23, 453, 235, 234, 345, 235 ]
+```
+
+## forEach
+```js
+let posts = ["Hi", "Hello", "Bye"];
+
+posts.forEach(post => console.log(post));
+```
+```!
+$ node sample.js
+Hi
+Hello
+Bye
+```
+- map, filter, forEach의 차이
+  - map: 새로운 배열을 return
+  - filter: 조건에 맞는 새로운 배열을 생성
+  - 각각에 대해 어떤 시행만을 함
+- forEach의 활용
+  - user에 저장
+  - API로 보냄
+  - 경고를 보냄
+
+## push
+- 새로운 아이템을 배열에 추가
+```js
+let posts = ["Hi", "Hello", "Bye"];
+
+posts.push("new");
+
+console.log(posts);
+```
+```!
+$ node sample.js
+[ 'Hi', 'Hello', 'Bye', 'new' ]
+```
+
+## includes
+- 원소 포함여부 확인
+```js
+let greetings = ["Hi", "Bye", "Howdy"];
+
+if(!greetings.includes("Hello")){
+    greetings.push("Hello");
+}
+
+console.log(greetings);
+```
+```!
+$ node sample.js
+[ 'Hi', 'Bye', 'Howdy', 'Hello' ]
+```
