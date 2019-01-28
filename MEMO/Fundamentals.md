@@ -155,3 +155,12 @@ const fullDays = days.map((day, index) => `#${index} ${day}day`);
 
 console.log(fullDays);
 ```
+```!
+$ node sample.js
+[ '0 Monday',
+  '1 Tuesday',
+  '2 Wednesday',
+  '3 Thursday',
+  '4 Friday',
+  '5 Saturday' ]
+```
