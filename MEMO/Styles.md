@@ -10,6 +10,7 @@
   - css를 모듈로 바꿈
   - Header.css를 Header.module.css로 이름변경
   - 클래스 이름이 임의로 생성
+  - 작은 프로젝트에 효과적인 방법
     - Header.module.css
     ```css
     .navList{
@@ -38,3 +39,41 @@
     );
     ```
 - 최고의 해결방법: style components
+```!
+yarn add styled-components
+```
+- Header.js
+```js
+import React from "react";
+import {Link} from "react-router-dom";
+import styled from 'styled-components'
+
+const Header = styled.header``;
+
+const List = styled.ul`
+    display: flex;
+    &:hover{
+        background-color: blue;
+    }
+`;
+
+const Item = styled.li``;
+
+const SLink = styled(Link)``;
+
+export default () => (
+    <Header>
+        <List>
+            <Item>
+                <SLink to="/">Movies</SLink>
+            </Item>
+            <Item>
+                <SLink to="/tv">TV</SLink>
+            </Item>
+            <Item>
+                <SLink to="/search">Search</SLink>
+            </Item>
+        </List>
+    </Header>
+);
+```
