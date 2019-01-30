@@ -180,7 +180,7 @@ export default () => (
 ```
 ## Location Aware Header
 - props
-- winRouter: 다른 컴포넌트를 감싸는 컴포넌트
+- withRouter: 다른 컴포넌트를 감싸는 컴포넌트
 - 위 두개를 활용하여 border-bottom 생성
 ```js
 import React from "react";
