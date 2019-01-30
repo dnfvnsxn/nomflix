@@ -27,6 +27,10 @@ export default class extends React.Component{
         loading: true
     }
 
+    componentDidMount(){
+
+    }
+
 
 
     // 이곳에 로직을 추가 
@@ -58,3 +62,55 @@ import homeContainer from "./HomeContainer"
 export default homeContainer
 
 ```
+
+- component Lifecycle
+  - Render 
+    1. componentWillMount()
+    2. render()
+    3. componentDidMount()
+  - Update 
+    1. componentWillReceiveProps() 
+    2. shouldComponentUpdate() 
+    3. componentWillUpdate() 
+    4. render() 
+    5. componentDidUpdate()
+
+- Home Container 작동방식
+  - 컴포넌트가 마운트 되면 nowPlaying, upcoming, popular를 찾음 
+  - 끝나고 나면 state 값을 설정
+  - 에러가 있으면 loading을 false로 변경
+- 로직 구성의 2가지 옵션
+  - componentDidMount() 안에서 전체 API 요청
+    ```js
+     async componentDidMount(){
+    try{            
+      const {
+        data: { results: nowPlaying }
+      } = await moviesApi.nowPlaying();
+      
+      const {
+        data: { results: upcoming } 
+      } = await moviesApi.upcoming;
+
+      const {
+        data: { results: popular } 
+      } = await moviesApi.popular;
+
+      this.setState({
+        nowPlaying,
+        upcoming,
+        popular,
+      })
+
+    } catch{        // 작동하지 않으면 crror를 catch
+      this.setState({
+        error: "Cant't find movie information."
+      });
+    } finally{       // 성공,실패 여부와 상관없 이 마지막에는 무엇인가를 실행 
+      this.setState({
+        loading: false
+      });
+    }
+  }
+    ````
+  - 각각의 요청을 분리된 함수로 만들어서 따로 요청
