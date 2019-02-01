@@ -11,31 +11,27 @@ export default class extends React.Component {
     loading: true
   };
 
-  async componentDidMount(){
-    try{            // 실핼
+  async componentDidMount() {
+    try {
       const {
         data: { results: nowPlaying }
       } = await moviesApi.nowPlaying();
-      
       const {
-        data: { results: upcoming } 
-      } = await moviesApi.upcoming;
-
+        data: { results: upcoming }
+      } = await moviesApi.upcoming();
       const {
-        data: { results: popular } 
-      } = await moviesApi.popular;
-
+        data: { results: popular }
+      } = await moviesApi.popular();
       this.setState({
         nowPlaying,
         upcoming,
-        popular,
-      })
-
-    } catch{        // 작동하지 않으면 crror를 catch
-      this.setState({
-        error: "Cant't find movie information."
+        popular
       });
-    } finally{       // 성공,실패 여부와 상관없 이 마지막에는 무엇인가를 실행 
+    } catch {
+      this.setState({
+        error: "Can't find movie information."
+      });
+    } finally {
       this.setState({
         loading: false
       });
@@ -43,7 +39,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { nowPlaying, upcoming, popular, error, loading } = this.state; //Object Deconstruction
+    const { nowPlaying, upcoming, popular, error, loading } = this.state;
     return (
       <HomePresenter
         nowPlaying={nowPlaying}

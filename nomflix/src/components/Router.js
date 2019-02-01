@@ -10,7 +10,10 @@ import Detail from "Routes/Detail";
 export default () =>(
     <Router>
         <>
-            <Header />
+            <Header></Header>
+            
+
+
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/tv" exact component={TV} />
